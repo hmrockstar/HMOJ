@@ -10,7 +10,7 @@ curl_setopt_array($curl, array(
         'source' => $_GET["name"],
         'lang'=>'2',
         'testcases'=>'["1","2","3","345678"]',
-        'api_key'=>'hackerrank|597045-1168|fe47359f9224d36df1ff58a1574e6c1fa5c15530'
+        'api_key'=>'hackerrankKey'
     )
 ));
 $resp = curl_exec($curl);
