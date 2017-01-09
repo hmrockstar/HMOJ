@@ -38,7 +38,7 @@ $jsonIterators = new RecursiveIteratorIterator(
     new RecursiveArrayIterator(json_decode($resp, TRUE)),
     RecursiveIteratorIterator::SELF_FIRST);
 foreach ($jsonIterators as $key => $val) {
-    if($key=="stdout")
+    if(!strcmp("$key","stdout"))
     {
     	if(is_array($val))
     	{
@@ -51,6 +51,12 @@ foreach ($jsonIterators as $key => $val) {
             $i++;
 		}
 		}
+		else
+		
+		{
+    		echo "Compilation Error";
+                return;
+    	}
     }
 }
 echo "Accepted";
