@@ -1,5 +1,31 @@
+<html>
+<head>
+ 	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>HMOJ</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Arima+Madurai" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+</head>
+
+<body style='margin: 0px; font-family: 'Arima Madurai', cursive;'>	
+<div style="height: 7vh; background: #333; color: #fff;">
+			<div class="container-fluid flex-center">
+				<h3 style=""> HMOJ </h3>
+			</div>
+<div class="view hm-black-slight" style="height: 85vh; color: #000;">
 <?php
 $n="";
+$flag=0;
 if(!strcmp($_GET["name"],"$n"))
 {
 	echo "NO SOURCE CODE FOUND";
@@ -19,7 +45,8 @@ curl_setopt_array($curl, array(
 ));
 $resp = curl_exec($curl);
 curl_close($curl);
-//echo "$resp";
+$cnt=0;
+echo "$resp";
 $jsonIterator = new RecursiveIteratorIterator(
     new RecursiveArrayIterator(json_decode($resp, TRUE)),
     RecursiveIteratorIterator::SELF_FIRST);
@@ -30,6 +57,7 @@ foreach ($jsonIterator as $key => $val) {
     	if(is_array($val))
     	{
     	foreach ($val as &$value) {
+    		$cnt++;
     		echo $value.'<br>';
 		}
 		}
@@ -37,6 +65,7 @@ foreach ($jsonIterator as $key => $val) {
 }
 echo '<br>';
 $cases= file("testcase.txt");
+$count=count($cases);
 $i=0;
 echo "VERDICT::  ";
 $jsonIterators = new RecursiveIteratorIterator(
@@ -50,19 +79,35 @@ foreach ($jsonIterators as $key => $val) {
     	foreach ($val as &$value) {
             if(strcmp("$value","$cases[$i]"))
             {
-                echo "Wrong Answer";
-                return;
+            	$flag=1;
             }
             $i++;
 		}
 		}
 		else
-		
 		{
-    		echo "Compilation Error";
-                return;
+			$flag=2;
+    		
     	}
     }
 }
+if($flag==2)
+{
+	echo "Compilation Error";
+}
+else if($flag==1||$cnt!=$count-1)
+{
+	echo "Wrong Answer";
+}
+else 
 echo "Accepted";
 ?>
+</div>
+<div style="height: 8vh">
+					<div class="container-fluid flex-center" style="background: #333; color: #fff">
+						<center><p> Written by: <a href="http://codeforces.com/profile/hmrockstar">Himanshu Mishra</a> <br> Using <a href="https://www.hackerrank.com/api/docs">Hackerrank API</a> &copy;
+by <a href="http://hackerrank.com">Hackerrank</a></p></center>
+					</div>
+				</div>				
+</body>
+</html>
