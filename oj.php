@@ -46,7 +46,7 @@ curl_setopt_array($curl, array(
 $resp = curl_exec($curl);
 curl_close($curl);
 $cnt=0;
-echo "$resp";
+//echo "$resp";
 $jsonIterator = new RecursiveIteratorIterator(
     new RecursiveArrayIterator(json_decode($resp, TRUE)),
     RecursiveIteratorIterator::SELF_FIRST);
@@ -93,7 +93,18 @@ foreach ($jsonIterators as $key => $val) {
 }
 if($flag==2)
 {
-	echo "Compilation Error";
+	echo "Compilation Error".'<br>';
+	$jsonIterators = new RecursiveIteratorIterator(
+    new RecursiveArrayIterator(json_decode($resp, TRUE)),
+    RecursiveIteratorIterator::SELF_FIRST);
+    foreach ($jsonIterators as $key => $val)
+    {
+        if(!strcmp($key,"compilemessage"))
+        {
+        	echo "Compile message:: ";
+        	echo $val;
+		}
+    }
 }
 else if($flag==1||$cnt!=$count-1)
 {
