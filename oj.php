@@ -1,4 +1,10 @@
 <?php
+$n="";
+if(!strcmp($_GET["name"],"$n"))
+{
+	echo "NO SOURCE CODE FOUND";
+    return;	
+}
 $curl = curl_init();
 curl_setopt_array($curl, array(
     CURLOPT_RETURNTRANSFER => 1,
@@ -18,9 +24,8 @@ $jsonIterator = new RecursiveIteratorIterator(
     new RecursiveArrayIterator(json_decode($resp, TRUE)),
     RecursiveIteratorIterator::SELF_FIRST);
 echo "YOUR OUTPUT".'<br>'.'<br>';
-
 foreach ($jsonIterator as $key => $val) {
-    if($key=="stdout")
+    if(!strcmp("$key","stdout"))
     {
     	if(is_array($val))
     	{
@@ -61,3 +66,4 @@ foreach ($jsonIterators as $key => $val) {
 }
 echo "Accepted";
 ?>
+Contact GitHub API
