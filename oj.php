@@ -66,4 +66,3 @@ foreach ($jsonIterators as $key => $val) {
 }
 echo "Accepted";
 ?>
-Contact GitHub API
