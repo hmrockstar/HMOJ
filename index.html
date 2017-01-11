@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css?family=Arima+Madurai" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+	<link rel="stylesheet" type="text/css" href="plugin/cm/lib/codemirror.css">
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
 
@@ -53,10 +53,10 @@
 		                </select>
 			</br>
 			</br>
+			Enter Your Code: </br><textarea class="codemirror-textarea" name="name" id="name"></textarea> </br> 
 		<div class="container">
 		 <div class="row">
         	<div class="col-md-12" style="color: #000;">
-			Enter Your Code: </br><textarea name="name" id="name" style="height: 40vh; width: 100%; border: 3px solid #333; outline: none; border-radius: 5px; margin-left: -15px;" required></textarea> </br>
 					<button type="submit" class="btn" style="background: #222;"> Submit Code </button>
 			</div>
 		</div>
@@ -73,7 +73,10 @@
 						<center><p> Written by: <a href="http://codeforces.com/profile/hmrockstar">Himanshu Mishra</a> <br> Using <a href="https://www.hackerrank.com/api/docs">Hackerrank API</a> &copy;
 by <a href="http://hackerrank.com">Hackerrank</a></p></center>
 					</div>
-				</div>				
+				</div>	
+				<script type="text/javascript" src="js/jquery.min.js"></script>
+				<script type="text/javascript" src="plugin/cm/lib/codemirror.js"></script>
+				<script type="text/javascript" src="js/default.js"></script>
 				</body>
 </body>
 </html>
